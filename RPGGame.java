@@ -150,8 +150,6 @@ public class RPGGame extends Throwable {
     int currentRolls = 0;
 
     while (rolls > 0) {
-      // So there can be a wait between rolls (for aesthetics)
-
       boolean willRoll = player.decide(gameDie.getSides(), currentRolls, turnPoints, rolls, playingScore);
 
       if (willRoll || currentRolls == 0) {
