@@ -8,6 +8,8 @@
 
 # RPG Game
 
+https://github.com/jrags20/CPSCRPG.git
+
 Rags to Riches
 Rags to Riches can be a single or two player game involving cards and dice.
 
