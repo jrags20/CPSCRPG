@@ -5,10 +5,13 @@
 */
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class RPGGame extends Throwable {
 
-  public RPGGame(Scanner amountPlayers) throws InterruptedException {
+  public RPGGame(Scanner amountPlayers) throws InterruptedException, IOException {
     System.out.println("Welcome to Rags to Riches! \nHow many players are playing? \nPlease enter '1' or '2'");
 
     // needs to only accept 1 or 2
@@ -33,6 +36,18 @@ public class RPGGame extends Throwable {
     else {
       onePlayer(amountPlayers);
     }
+
+    // Create a file and write the final result to it
+    File file = new File("result.txt");
+    if (file.createNewFile()) {
+      System.out.println("File created: " + file.getName());
+    } else {
+      System.out.println("File already exists.");
+    }
+    FileWriter writer = new FileWriter(file);
+    writer.write("Thanks for playing Rags to Riches!");
+    writer.close();
+    
   }
 
   private class Player {
@@ -332,6 +347,10 @@ public class RPGGame extends Throwable {
 
     Scanner gameScan = new Scanner(System.in);
 
-    RPGGame newGame = new RPGGame(gameScan);
+    try {
+      RPGGame newGame = new RPGGame(gameScan);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
